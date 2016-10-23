@@ -1,0 +1,26 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+  Server:
+    label: Server
+    placeholder: tattler.yourdomain.tld
+    span: left
+    comment: tattler.yourdomain.tld
+    required: true
+
+  Secure:
+    label: Secure
+    comment: Use secure connection
+    span: right
+    type: dropdown
+    options:
+      0: "no"
+      1: "yes"
+
+  Namespace:
+    label: Application namespace
+    required: true
+    placeholder: Application or website name
+

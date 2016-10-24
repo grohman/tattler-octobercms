@@ -21,4 +21,6 @@ $(function () {
     }
 
     tattler.run();
+
+    window.tattler = tattler;
 });

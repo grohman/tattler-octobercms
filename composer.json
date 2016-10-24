@@ -4,7 +4,6 @@
     "type": "library",
     "require": {
         "predis/predis": "^1.1",
-        "guzzlehttp/guzzle": "^6.2",
         "oktopost/tattler-php": "^1.0"
     },
     "license": "MIT",
@@ -14,14 +13,9 @@
             "email": "dpodrabinek@oktopost.com"
         }
     ],
-    "scripts": {
-        "pre-install-cmd": [],
-        "post-install-cmd": [
-            "php -r \"copy('vendor/oktopost/tattler-php/js/tattler.min.js', 'assets/js/tattler.min.js');\""
-        ],
-        "pre-update-cmd": [],
-        "post-update-cmd": [
-            "php -r \"copy('vendor/oktopost/tattler-php/js/tattler.min.js', 'assets/js/tattler.min.js');\""
+    "autoload": {
+        "files": [
+            "helpers/tattler.php"
         ]
     },
     "minimum-stability": "stable"

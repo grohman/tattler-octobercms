@@ -88,7 +88,6 @@ class Plugin extends PluginBase
      */
     private function loadAssets($widget, array $rooms = [])
     {
-
         $widget->addCss('https://cdn.jsdelivr.net/jquery.gritter/1.7.4/css/jquery.gritter.css');
 
         $widget->addJs('https://cdn.jsdelivr.net/jquery.gritter/1.7.4/js/jquery.gritter.min.js');

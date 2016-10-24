@@ -8,7 +8,7 @@ Adding new js handlers:
 
     window.tattler.addHandler('mySuperHandler', 'global', function(data){ console.log(data); })
 
-Then from php run `Tattler::say(['handler'=>'mySuperHandler', 'anything'=>['else'], [1,2,3]]);`
+Then from php run `tattler()->message('mySuperHandler', ['anything'=>['else'], [1,2,3]])->say();`
 
 -------
 **Installation**
@@ -19,16 +19,13 @@ Then from php run `Tattler::say(['handler'=>'mySuperHandler', 'anything'=>['else
     or
     `git submodule init && git submodule add https://github.com/grohman/tattler-octobertcms plugins/grohman/tattler`
 
-   
-
-`cd plugins/grohman/tattler`
-
-`composer install`
-
-`cd -`
-
 `php artisan october:up`
+   
+`composer update`
 
+`cp vendor/oktopost/tattler-php/js/tattler.min.js plugins/grohman/tattler/assets/js`
+
+Then go to CMS settings and setup Tattler
 
 
 

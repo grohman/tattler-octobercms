@@ -26,6 +26,7 @@ class Settings extends Model
 
     protected $rules = [
         'Server'    => 'string|required',
+        'Port'      => 'integer|required',
         'Secure'    => 'boolean|required',
         'Namespace' => 'string|required',
     ];

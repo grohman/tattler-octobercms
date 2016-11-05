@@ -10,10 +10,17 @@ fields:
     comment: tattler.yourdomain.tld
     required: true
 
+  Port:
+    label: Port
+    placeholder: 80
+    span: right
+    comment: Server Port
+    required: true
+
   Secure:
     label: Secure
-    comment: Use secure connection
-    span: right
+    comment: "Use secure connection (wss: and https: instead of ws: and http:)"
+    span: left
     type: dropdown
     options:
       0: "no"
@@ -21,6 +28,7 @@ fields:
 
   Namespace:
     label: Application namespace
+    span: right
     required: true
     placeholder: Application or website name
 

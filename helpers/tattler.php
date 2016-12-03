@@ -7,7 +7,6 @@ use Tattler\Base\Channels\IRoom;
 use Tattler\Base\Objects\ITattlerMessage;
 
 use Grohman\Tattler\Lib\Tattler;
-use Backend\Models\User;
 use Illuminate\Support\Facades\Queue;
 
 
@@ -62,14 +61,25 @@ class TattlerHelper
     }
 
     /**
-     * @param User $user
+     * @param $user
      * @return static
      */
-    public function to(User $user)
+    public function to($user)
     {
         $this->testTarget();
 
-        $result = $this->wrapper->getBackendUser($user);
+        if($user instanceof \Backend\Models\User)
+        {
+            $result = $this->wrapper->getBackendUser($user);
+        } else if($user instanceof \Rainlab\User\Models\User)
+        {
+	        $result = $this->wrapper->getFrontendUser($user);
+        }
+        else
+        {
+        	throw new \Exception('User instance class unsupported');
+        }
+        
         $this->data['target']['users'][] = $result;
 
         return $this;
@@ -114,11 +124,12 @@ class TattlerHelper
 
         return true;
     }
-
-    /**
-     * @param mixed $job
-     * @param array $data
-     */
+	
+	/**
+	 * @param mixed $job
+	 * @param array $data
+	 * @return bool
+	 */
     public function queue($job, $data)
     {
         $tattler = $this->wrapper->getTattler();

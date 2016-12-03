@@ -34,12 +34,12 @@ class Settings extends Model
     public function afterSave()
     {
         $data = $this->toArray();
-        $config = json_decode($data['value']);
+        $config = json_encode($data['value']);
         return Cache::forever(self::$cacheIdx, $config);
     }
 
     public static function getConfig()
     {
-        return Cache::get(self::$cacheIdx);
+        return json_decode(Cache::get(self::$cacheIdx));
     }
 }

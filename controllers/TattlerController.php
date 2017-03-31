@@ -4,6 +4,7 @@ namespace Grohman\Tattler\Controllers;
 
 use Backend\Facades\BackendAuth;
 use Backend\Models\User;
+use Firebase\JWT\JWT;
 use Grohman\Tattler\Lib\Tattler;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -44,5 +45,22 @@ class TattlerController extends Controller
         }
 
         return ['channels' => $this->tattler->getChannels($channels)];
+    }
+    
+    public function getAuth()
+    {
+	    /** @var User $backendUser */
+	    $backendUser = BackendAuth::getUser();
+	
+	    if ($backendUser)
+	    {
+	    	$payload = ['is_backend' => true, 'userId' => $backendUser->id];
+	    }
+	    else
+	    {
+	    	$payload = ['is_backend' => false];
+	    }
+	    
+	    return ['token' => JWT::encode($payload, $this->tattler->getJWTSecret())];
     }
 }

@@ -31,4 +31,9 @@ fields:
     span: right
     required: true
     placeholder: Application or website name
+    
+  Secret:
+    label: Your private key
+    required: true
+    placeholder: Some very random string
 

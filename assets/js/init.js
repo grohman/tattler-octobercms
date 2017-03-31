@@ -4,7 +4,8 @@ $(function () {
     var tattler = tattlerFactory.create({
         urls: {
             ws: '/_tattler/ws',
-            channels: '/_tattler/channels'
+            channels: '/_tattler/channels',
+            auth: '/_tattler/auth'
         },
         autoConnect: false,
         debug: data.debug

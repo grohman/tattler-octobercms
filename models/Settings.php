@@ -29,6 +29,7 @@ class Settings extends Model
         'Port'      => 'integer|required',
         'Secure'    => 'boolean|required',
         'Namespace' => 'string|required',
+        'Secret'    => 'string|required'
     ];
 
     public function afterSave()
